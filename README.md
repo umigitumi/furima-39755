@@ -4,10 +4,18 @@
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| name               | string | null: false |
+| nickname           | string | null: false |
 | email              | text   | null: false |
 | password           | text   | null: false |
 | encrypted_password | text   | null: false |
+| name_1             | string | null: false |
+| name_2             | string | null: false |
+| name_1_kana        | string | null: false |
+| name_2_kana        | string | null: false |
+| birthday_year      | integer| null: false |
+| birthday_month     | integer| null: false |
+| birthday_day       | integer| null: false |
+
 
 ### Association
 
@@ -21,14 +29,9 @@
 | Column          | Type         | Options                        |
 | --------------- | ------------ | ------------------------------ |
 | name            | string       | null: false                    |
-| image           | string       | null: false                    |
-| category        | text         | null: false                    |
-| price           | text         | null: false                    |
-| delivery_cost   | text         | null: false                    |
-| item_condition  | text         | null: false                    |
-| item_info       | text         | null: false                    |
-| item_days       | text         | null: false                    |
-| user_id         | references   | null: false, foreign_key: true |
+| category_id     | integer      | null: false                    |
+| price           | integer      | null: false                    |
+| users           | references   | null: false, foreign_key: true |
 
 ### Association
 
@@ -41,14 +44,14 @@
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| post_num      | text       | null: false                    |
+| post_num      | string     | null: false                    |
 | prefecture    | string     | null: false                    |
 | city          | string     | null: false                    |
 | number        | text       | null: false                    |
-| building      | string     | null: false                    |
+| building      | string     |                                |
 | phone         | text       | null: false                    |
-| user_id       | references | null: false, foreign_key: true |
-| items_id      | references | null: false, foreign_key: true |
+| users         | references | null: false, foreign_key: true |
+| items         | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -66,9 +69,9 @@
 | ------------- | ---------- | ------------------------------ |
 | user          | string     | null: false                    |
 | item          | text       | null: false                    |
-| user_id       | references | null: false, foreign_key: true |
-| items_id      | text       | null: false, foreign_key: true |
-| delivers_id   | text       | null: false, foreign_key: true |
+| users         | references | null: false, foreign_key: true |
+| items         | references | null: false, foreign_key: true |
+| delivers      | references | null: false, foreign_key: true |
 
 
 
