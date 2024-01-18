@@ -7,10 +7,10 @@
 | nickname           | string | null: false               |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
-| name_1             | string | null: false               |
-| name_2             | string | null: false               |
-| name_1_kana        | string | null: false               |
-| name_2_kana        | string | null: false               |
+| name_first         | string | null: false               |
+| name_last          | string | null: false               |
+| name_first_kana    | string | null: false               |
+| name_last_kana     | string | null: false               |
 | birthday           | date   | null: false               |
 
 
@@ -22,13 +22,17 @@
 
 ## items テーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| name            | string     | null: false                    |
-| category_id     | integer    | null: false                    |
-| category_info   | text       | null: false                    |
-| price           | integer    | null: false                    |
-| user            | references | null: false, foreign_key: true |
+| Column            | Type       | Options                        |
+| ----------------  | ---------- | ------------------------------ |
+| name              | string     | null: false                    |
+| item_info         | text       | null: false                    |
+| category_id       | integer    | null: false                    |
+| item_condition_id | integer    | null: false                    |
+| delivery_cost_id  | integer    | null: false                    |
+| delivery_area_id  | integer    | null: false                    |
+| delivery_days_id  | integer    | null: false                    |
+| price             | integer    | null: false                    |
+| user              | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -41,7 +45,7 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | post_num      | string     | null: false                    |
-| prefecture    | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | number        | string     | null: false                    |
 | building      | string     |                                |
@@ -51,22 +55,20 @@
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
-- has_many   :purchases
+- belongs_to :purchase
 
 
 
 ## purchasesテーブル
 
-| Column        | Type       | Options     |
-| ------------- | ---------- | ----------- |
-| user          | string     | null: false |
-| item          | string     | null: false |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| user          | references | null: false, foreign_key: true |
+| item          | references | null: false, foreign_key: true |
 
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :purchase
+- has_one :purchase
