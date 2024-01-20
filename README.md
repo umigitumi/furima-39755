@@ -42,15 +42,15 @@
 
 ## delivers テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| post_num      | string     | null: false                    |
-| prefecture_id | integer    | null: false                    |
-| city          | string     | null: false                    |
-| number        | string     | null: false                    |
-| building      | string     |                                |
-| phone         | string     | null: false                    |
-| purchase      | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| post_num         | string     | null: false                    |
+| delivery_area_id | integer    | null: false                    |
+| city             | string     | null: false                    |
+| number           | string     | null: false                    |
+| building         | string     |                                |
+| phone            | string     | null: false                    |
+| purchase         | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -71,4 +71,4 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :purchase
+- has_one :deliver
